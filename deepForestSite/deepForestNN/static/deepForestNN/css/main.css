@@ -17,7 +17,7 @@ html, body {
 }
 
 img {
-    max-width: 100%
+    max-width: 100%;
     height: auto;
 }
 
@@ -574,3 +574,10 @@ table tr {
     min-height: 33%;
 }
 /* USERS */
+
+
+/* Image */
+.image_selection{
+
+}
+/* Image */

@@ -2,16 +2,26 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
 from .services import deepForest_service
+from .forms import SetImageForm
 
 
 @login_required
 def main(request):
+    deepForest_service.clean_image(request.user)
     if request.method == "POST":
-        deepForest_service.initialize_analyze(request.user)
-        return redirect(reverse_lazy('deepForest:results'))
+        form = SetImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            # Создаем объект модели, но не сохраняем его в базу данных
+            image_data = form.save(commit=False)
+            # Выполняем ваш метод анализа
+            deepForest_service.initialize_analyze(request.user, image_data)
+            return redirect(reverse_lazy('deepForest:results'))
+    else:
+        form = SetImageForm()
     context = {
         'title': "Главное меню",
-        'show_nav': True
+        'show_nav': True,
+        'form': form
     }
     return render(request, "deepForestNN/main.html", context)
 

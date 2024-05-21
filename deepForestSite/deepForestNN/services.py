@@ -5,20 +5,32 @@ from .models import *
 class WarmUpService:
 
     def clean_image(self, user):
-        user.processed_image = None
+        processed_image = user.processed_image
+        if processed_image:
+            user.processed_image = None
+            user.save()
+            processed_image.delete()
 
-    def initialize_analyze(self, user):
+    def initialize_analyze(self, user, image_data):
+        #Очищаем прошлое изображение
         self.clean_image(user)
+        #Присваиваем новое изображение
+        user.processed_image = image_data
+        image_data.user = user
+
 
         #Обработка фото
-        #...
+        image_data.result_file = image_data.source_file
 
+        #Сохраняем изменения
+        image_data.save()
+        user.save()
 
 
 
     def get_result(self, user) -> dict:
         context = {}
-        context['results'] = "ОБРАБОТАННОЕ ФОТО"
+        context['processed_image'] = user.processed_image
         return context
 
 

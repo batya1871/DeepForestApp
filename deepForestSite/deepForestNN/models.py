@@ -1,3 +1,5 @@
+import os
+
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -15,11 +17,21 @@ class User(AbstractUser):
 
 
 class Image_data(models.Model):
-    name = models.CharField("Название", max_length=15, unique=True)
+    source_file = models.FileField(upload_to="analyzing_images/source_images", verbose_name="Изначальное фото")
+    result_file = models.FileField(upload_to="analyzing_images/result_images", verbose_name="Обработанное фото")
 
-    def __str__(self):
-        return self.name
 
     class Meta:
         verbose_name = "Данные по фото"
         verbose_name_plural = "Данные по фото"
+
+    def delete(self, *args, **kwargs):
+        # Удаление файлов с сервера
+        if self.source_file:
+            if os.path.isfile(self.source_file.path):
+                os.remove(self.source_file.path)
+        if self.result_file:
+            if os.path.isfile(self.result_file.path):
+                os.remove(self.result_file.path)
+        # Вызов родительского метода delete
+        super().delete(*args, **kwargs)

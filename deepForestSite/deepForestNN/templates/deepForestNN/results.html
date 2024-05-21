@@ -3,7 +3,20 @@
 
 <div class="form-container">
    <p>РЕЗУЛЬТАТ</p>
-    <p>{{results}}</p>
+    {% if processed_image %}
+    <div class="images-set">
+        <div class="source-image">
+            <p>Изначальное изображение:</p>
+            <img class="img-in-result" src="{{processed_image.source_file.url}}">
+        </div>
+        <div class="result-image">
+            <p>Обработанное изображение:</p>
+            <img class="img-in-result" src="{{processed_image.result_file.url}}">
+        </div>
+    </div>
+    {% else %}
+    <p>Ошибка загрузки файлов!</p>
+    {% endif %}
 </div>
 
 {% endblock %}
