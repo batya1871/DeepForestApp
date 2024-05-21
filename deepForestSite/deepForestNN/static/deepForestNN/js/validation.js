@@ -66,9 +66,22 @@ if (fileInput != null){
       if (fileInput.files.length > 0) {
           // Если файл выбран, меняем текст label на имя файла
           label.textContent = `Вы выбрали: ${fileInput.files[0].name}`;
+          label.classList.remove("error-label");
       } else {
           // Если файл не выбран, возвращаем исходный текст label
           label.textContent = originalLabelText;
       }
   });
+}
+const source_btn = document.getElementById('btn-source-img');
+if (source_btn != null){
+    console.log("Кнопка обнаружена");
+    source_btn.addEventListener('click', event => {
+    console.log("Кнопка нажата");
+      if (fileInput.files.length == 0) {
+          label.classList.add("error-label");
+      } else {
+          label.classList.remove("error-label");
+      }
+    }, false)
 }

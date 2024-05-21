@@ -11,7 +11,7 @@
           {% for f in form %}
              <div class="form-obj-set image-obj-set">
                  <div class="image-input">
-                     <label class="form-label btn-default image-selection-btn" for="{{f.id_for_label}}">{{f.label}}</label>
+                     <label  class="form-label btn-default image-selection-btn" for="{{f.id_for_label}}">{{f.label}}</label>
                      {{f}}
                      <div class="form-error">
                        {{f.errors}}
@@ -20,7 +20,7 @@
              </div>
              {% endfor %}
              <div class="form-error">{{ form.non_field_errors}}</div>
-          <p><button type="submit" class="btn-default">Найти деревья</button> </p>
+          <p><button type="submit" id="btn-source-img" class="btn-default">Найти деревья</button> </p>
         </form>
     <div>
 

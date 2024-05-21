@@ -13,7 +13,7 @@ class SetImageForm(forms.ModelForm):
             })
         }
         labels = {
-            'source_file': 'нажмите на эту кнопку, чтобы выбрать изображение'
+            'source_file': 'Выбрать изображение'
         }
 
     def clean_source_file(self):
