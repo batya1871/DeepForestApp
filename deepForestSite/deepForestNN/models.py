@@ -19,7 +19,7 @@ class User(AbstractUser):
 class Image_data(models.Model):
     source_file = models.FileField(upload_to="analyzing_images/source_images", verbose_name="Изначальное фото")
     result_file = models.FileField(upload_to="analyzing_images/result_images", verbose_name="Обработанное фото")
-
+    trees_count = models.IntegerField("Деревьев обнаружено", default=0)
 
     class Meta:
         verbose_name = "Данные по фото"
