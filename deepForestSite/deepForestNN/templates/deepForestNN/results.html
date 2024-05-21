@@ -1,23 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="form-container">
-   <p>РЕЗУЛЬТАТ</p>
-    {% if processed_image %}
-    <div class="images-set">
-        <div class="source-image">
-            <p>Изначальное изображение:</p>
-            <img class="img-in-result" src="{{processed_image.source_file.url}}">
+<div class="form-users-container result-container">
+    <div class="form-users-css result-form">
+        <h1>РЕЗУЛЬТАТ</h1>
+        {% if processed_image %}
+        <div class="images-set">
+            <div class="source-image">
+                <p class="img-text">Изначальное изображение:</p>
+                <img class="img-in-result" src="{{processed_image.source_file.url}}">
+            </div>
+            <div class="result-image">
+                <p class="img-text">Обработанное изображение:</p>
+                <img class="img-in-result" src="{{processed_image.result_file.url}}">
+            </div>
         </div>
-        <div class="result-image">
-            <p>Обработанное изображение:</p>
-            <img class="img-in-result" src="{{processed_image.result_file.url}}">
-        </div>
-        <p>Кол-во объектов, определяемых как "дерево" = {{processed_image.trees_count }}</p>
+        <p class="count-text">Кол-во объектов, определяемых как "дерево" = {{processed_image.trees_count }}</p>
+        {% else %}
+        <p>Ошибка загрузки файлов!</p>
+        {% endif %}
     </div>
-    {% else %}
-    <p>Ошибка загрузки файлов!</p>
-    {% endif %}
+
 </div>
 
 {% endblock %}

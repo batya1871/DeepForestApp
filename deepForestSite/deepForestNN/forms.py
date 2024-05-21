@@ -8,12 +8,12 @@ class SetImageForm(forms.ModelForm):
         fields = ['source_file']
         widgets = {
             'source_file': forms.ClearableFileInput(attrs={
-                'class': 'image_selection',
+                'class': 'image-selection',
                 'accept': 'image/*'
             })
         }
         labels = {
-            'source_file': 'Выберите изображение, на котором хотите обнаружить деревья'
+            'source_file': 'нажмите на эту кнопку, чтобы выбрать изображение'
         }
 
     def clean_source_file(self):

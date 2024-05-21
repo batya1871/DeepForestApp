@@ -43,3 +43,32 @@ if ( button_new_pass != null){
     input.required = true;
 });
 }
+
+//Работа с margin кнопки при валидации
+const errorlist = document.querySelectorAll('.errorlist');
+const form_def = document.querySelectorAll('.reg-form');
+if ((errorlist.length > 0) && (form_def.length > 0)){
+    form_def[0].classList.add("form-padding-top");
+
+}
+
+
+
+// Получаем элементы input и label
+const fileInput = document.getElementById('id_source_file');
+const label = document.querySelector('label[for="id_source_file"]');
+
+
+if (fileInput != null){
+  const originalLabelText = label.textContent;
+  // Добавляем обработчик событий для изменения выбора файла
+  fileInput.addEventListener('change', function() {
+      if (fileInput.files.length > 0) {
+          // Если файл выбран, меняем текст label на имя файла
+          label.textContent = `Вы выбрали: ${fileInput.files[0].name}`;
+      } else {
+          // Если файл не выбран, возвращаем исходный текст label
+          label.textContent = originalLabelText;
+      }
+  });
+}

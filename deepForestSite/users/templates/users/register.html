@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="form-users-container">
-   <div class="form-users-css reg-form-size">
+   <div class="form-users-css reg-form">
       <h1 class="form-users-title">{{title}}</h1>
       <form method="post" class="needs-validation form-users-inputs" novalidate>
          {% csrf_token %}
@@ -11,14 +11,7 @@
          {% for f in form %}
          {% if f.label != "Пароль" and f.label != "Повтор пароля" %}
          <div class="form-obj-set">
-             {% if f.label != "Эл. почта" %}
             <div class="form-obj-field">{{f}}</div>
-             {% else %}
-             <div class="input-group has-validation">
-                <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-                {{f}}
-             </div>
-             {% endif %}
            <div class="form-error">
                {{f.errors}}
            </div>
@@ -29,9 +22,7 @@
               <div class="passwords">
               {% for f in form %}
                 {% if f.label == "Пароль" or f.label == "Повтор пароля" %}
-                 <div>
-                    <div class="form-obj-field">{{f}}</div>
-                 </div>
+                <div class="form-obj-field">{{f}}</div>
                 {% endif %}
                 {% if forloop.last %}
               </div>
@@ -45,6 +36,9 @@
 
          <div class="form-error">{{ form.non_field_errors}}</div>
          <p><button class="btn-default btn-users" type="submit">Регистрация</button></p>
+          <div class="form-text-div">
+              <p class="my-form-text">Уже есть аккаунт? <a class="my-form-text-ref" href="{% url 'users:login' %}">Войти</a></p>
+          </div>
       </form>
    </div>
 </div>
