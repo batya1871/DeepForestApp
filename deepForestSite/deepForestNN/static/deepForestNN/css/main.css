@@ -71,7 +71,7 @@ img {
 }
 
 .nav-my-settings {
-    background-color:#4c7a4c;
+    background-color:#373d37;
     height: 10%;
 }
 .navbar-expand-lg .navbar-nav .dropdown-menu{
@@ -116,7 +116,7 @@ img {
 .btn-default{
   color: #fff;
   text-decoration: none;
-  background-color:#325932;
+  background-color:#2c312c;
   border: none;
   height: 40px;
   width: 100%;
@@ -132,7 +132,7 @@ img {
   transition: all .5s;
 }
 .btn-default:hover {
-  background-color:#203b20;
+  background-color:#556054;
 }
 
 
@@ -148,7 +148,11 @@ h1 {
     height:100%;
     align-items: center;
     justify-content: center;
-    background: #689868;
+/*    background: #404940;*/
+    background-image: url('/media/background/background.jpg'); /* путь к вашему изображению */
+    background-size: cover; /* изображение покрывает весь div */
+    background-position: center; /* центрирование изображения */
+    background-repeat: no-repeat; /* изображение не повторяется */
 
 }
 .with-nav{
@@ -161,10 +165,11 @@ h1 {
     align-items: center;
     padding:15px;
     padding-top:10%;
-    background-color:#4c7a4c;
-    height:100%;
+    background-color:#373d37;
+    height:97%;
     min-width: 40%;
     max-width: 50%;
+    border-radius: 20px;
 }
 .form-padding-top{
     padding-top: 5% !important;
@@ -283,6 +288,7 @@ h1 {
 }
 .inside-profile-container{
     display:flex;
+    color: white;
     justify-content: flex-start;
         min-width: 90%;
 }
@@ -337,10 +343,12 @@ input[type="file"] {
   display: none;
 }
 .error-label{
-    border: 1px solid #73f563;
+    border: 1.5px solid #781d1d;
 }
 .result-container{
     height: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .result-form{
